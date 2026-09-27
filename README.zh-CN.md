@@ -12,7 +12,7 @@
   <a href="https://github.com/nodejs/node"><img src="https://img.shields.io/badge/Node.js-%3E%3D20.0.0-339933?style=flat-square&logo=node.js" alt="Node.js"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License: MIT"></a>
   <a href="#"><img src="https://img.shields.io/badge/Dependencies-Zero%20NPM-brightgreen?style=flat-square" alt="Zero NPM Dependencies"></a>
-  <a href="https://browseros.com"><img src="https://img.shields.io/badge/Browser-BrowserOS%20Neo-orange?style=flat-square" alt="BrowserOS Neo"></a>
+  <a href="https://github.com/browseros-ai/BrowserOS"><img src="https://img.shields.io/badge/Browser-BrowserOS%20Neo-orange?style=flat-square" alt="BrowserOS Neo"></a>
   <a href="https://typesafe.ai"><img src="https://img.shields.io/badge/Reflex-TypeSafe%20Jev-6366f1?style=flat-square" alt="TypeSafe Jev"></a>
 </p>
 
@@ -94,7 +94,7 @@ npm test
 
 ## 生态致谢
 
-- [BrowserOS Neo](https://browseros.com) — 原生支持 MCP 的真机 Agent 浏览器。
+- [BrowserOS Neo](https://github.com/browseros-ai/BrowserOS) — 原生支持 MCP 的真机 Agent 浏览器。
 - [TypeSafe AI](https://typesafe.ai) — 毫秒级决策反射模型。
 - [wy-coliney/jev-browser-use](https://github.com/wy-coliney/jev-browser-use) — Jev 状态机规范的原型启发。
 
