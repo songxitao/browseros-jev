@@ -98,4 +98,4 @@ npm test
 
 ## License
 
-[MIT License](LICENSE) © 2026 Antigravity & 尖子.
+[MIT License](LICENSE) © 2026 Antigravity & songxitao.

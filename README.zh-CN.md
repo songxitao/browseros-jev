@@ -102,4 +102,4 @@ npm test
 
 ## 开源协议
 
-[MIT License](LICENSE) © 2026 Antigravity & 尖子.
+[MIT License](LICENSE) © 2026 Antigravity & songxitao.
