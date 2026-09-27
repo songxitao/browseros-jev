@@ -1,3 +1,12 @@
+/**
+ * BrowserOS-Jev Engine Core
+ *
+ * Adapted from and incorporating code from:
+ * wy-coliney/jev-browser-use (https://github.com/wy-coliney/jev-browser-use)
+ * Copyright (c) 2026 Jev Browser Use contributors
+ * Licensed under the MIT License.
+ */
+
 import { readFile } from 'node:fs/promises';
 import { parseEnv } from 'node:util';
 import { homedir } from 'node:os';
