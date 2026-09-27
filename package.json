@@ -20,7 +20,7 @@
     "automation",
     "accessibility"
   ],
-  "author": "Antigravity & 尖子",
+  "author": "songxitao & Antigravity",
   "license": "MIT",
   "engines": {
     "node": ">=20.0.0"
