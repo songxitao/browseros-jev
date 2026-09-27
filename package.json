@@ -1,0 +1,28 @@
+{
+  "name": "browseros-jev",
+  "version": "1.0.0",
+  "description": "High-speed System-One decision acceleration bridge connecting BrowserOS Neo and TypeSafe Jev",
+  "main": "src/engine.mjs",
+  "type": "module",
+  "bin": {
+    "browseros-jev": "./bin/run.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "start": "node bin/run.mjs"
+  },
+  "keywords": [
+    "browseros",
+    "typesafe",
+    "jev",
+    "ai-agent",
+    "mcp",
+    "automation",
+    "accessibility"
+  ],
+  "author": "Antigravity & 尖子",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
