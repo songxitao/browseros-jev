@@ -1,128 +1,86 @@
-# BrowserOS-Jev: System-One Browser Reflex Accelerator ⚡
+# BrowserOS-Jev ⚡
+
+<p align="center">
+  <b>A lightweight, reflex-speed bridge connecting TypeSafe Jev with BrowserOS Neo.</b>
+</p>
+
+<p align="center">
+  <a href="./README.zh-CN.md">简体中文</a> | <a href="./README.md">English</a>
+</p>
 
 <p align="center">
   <a href="https://github.com/nodejs/node"><img src="https://img.shields.io/badge/Node.js-%3E%3D20.0.0-339933?style=flat-square&logo=node.js" alt="Node.js"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License: MIT"></a>
   <a href="#"><img src="https://img.shields.io/badge/Dependencies-Zero%20NPM-brightgreen?style=flat-square" alt="Zero NPM Dependencies"></a>
   <a href="https://browseros.com"><img src="https://img.shields.io/badge/Browser-BrowserOS%20Neo-orange?style=flat-square" alt="BrowserOS Neo"></a>
-  <a href="https://typesafe.ai"><img src="https://img.shields.io/badge/Engine-TypeSafe%20Jev-6366f1?style=flat-square" alt="TypeSafe Jev"></a>
+  <a href="https://typesafe.ai"><img src="https://img.shields.io/badge/Reflex-TypeSafe%20Jev-6366f1?style=flat-square" alt="TypeSafe Jev"></a>
 </p>
 
 ---
 
-## 💡 What is BrowserOS-Jev?
+## What is this?
 
-**BrowserOS-Jev** is the world's first open-source **System-One Reflex Accelerator** bridging **BrowserOS Neo** and **TypeSafe Jev**.
+**BrowserOS Neo** is a powerful AI-ready browser featuring persistent logins, anti-detect capabilities, and native MCP accessibility support.
 
-Inspired by Kahneman's **Dual-Process Theory**, modern autonomous browser agents shouldn't fire full-sized reasoning models (System 2, e.g. Claude 3.7 Sonnet, GPT-4o, Gemini 2.5 Flash) for trivial mechanical steps like "click the next page" or "scroll down 2 screens". Firing heavy models on every keystroke incurs 10-30s latencies, burns thousands of tokens, and frequently suffers from hallucinated deadlocks.
+However, driving a browser entirely with heavy reasoning LLMs (System 2, like Claude or GPT-4o) for every mechanical click or scroll is slow (10s+ per action) and burns excessive tokens.
 
-`browseros-jev` enables high-level reasoning agents to delegate mechanical execution loops to **TypeSafe Jev** (sub-200ms reflex decision engine) operating directly over **BrowserOS Neo's** accessibility snapshot stream via MCP.
-
----
-
-## 📊 Live Benchmark & Real-World Validation
-
-In rigorous live A/B testing on real-world authenticated web applications (e.g. Twitter / X timeline queries):
-
-| Metric | Traditional LLM Loop (System 2 Only) | BrowserOS-Jev Bridge (System 1 + 2) | Gain |
-| :--- | :---: | :---: | :---: |
-| **Total Task Duration** | 275 seconds | **134 seconds** | **⚡ 51.3% Faster** |
-| **Per-Action Latency** | 8,000ms – 15,000ms | **~250ms** | **⚡ 40x Faster Reflex** |
-| **Heavy LLM Invocations** | 12 full context roundtrips | **1 supervisory verification** | **📉 91.7% Token Savings** |
-| **Deadlock Handling** | Infinite loops / hallucinations | **Anti-Deadlock Brake (Handoff)** | **🛡️ 100% Deterministic Safety** |
+**BrowserOS-Jev** is a clean, minimal glue bridge that integrates **TypeSafe Jev** (sub-200ms System-One decision models) into **BrowserOS Neo**. It allows autonomous agents to delegate mechanical browsing steps to Jev's fast reflex loop while retaining supervisory control.
 
 ---
 
-## 🏗️ Architecture
+## Key Features
 
-```mermaid
-flowchart TD
-    subgraph AgentSystem["System 2: Deep Reasoning & Supervision"]
-        LLM["Supervisory Agent (Claude / Codex / Antigravity)"]
-    end
-
-    subgraph FastLoop["System 1: Mechanical Reflex (<250ms)"]
-        Bridge["browseros-jev-bridge"]
-        JevEngine["TypeSafe Jev Decision Engine"]
-        SafetyGate["Origin & Anti-Deadlock Safety Gate"]
-    end
-
-    subgraph Browser["Live User Environment"]
-        Neo["BrowserOS Neo (Persistent Logins)"]
-        MCP["BrowserOS HTTP MCP Server (:9011)"]
-    end
-
-    LLM -->|"High-level Task & Policy"| Bridge
-    Bridge -->|"Fetch AX State Snapshot"| MCP
-    MCP -->|"Accessibility Tree"| Bridge
-    Bridge -->|"Evaluate Criteria & Action Candidates"| JevEngine
-    JevEngine -->|"Fast Action Decision"| SafetyGate
-    SafetyGate -->|"Dispatches Click / Scroll / Key"| MCP
-    MCP -->|"Physical Action"| Neo
-    SafetyGate -.->|"Low confidence / Blocked / Verification"| LLM
-```
+- ⚡ **Sub-Second Reflex**: ~200ms mechanical decisions (click, scroll, key press) instead of waiting for heavy LLMs.
+- 🌐 **Native MCP Integration**: Communicates directly with BrowserOS Neo over its standard HTTP MCP interface (`:9011`).
+- 📦 **Zero NPM Dependencies**: 100% pure modern Node.js (v20+ ESM) with built-in modules (`node:fs`, `node:util`, `node:path`, `fetch`).
+- 🛡️ **Built-in Guardrails**: Domain jailing (`allowedOrigins`), anti-deadlock state detection, and sensitive action gating.
+- 🔌 **Agent & CLI Ready**: Usable as a standalone CLI or directly callable as a Skill from Claude Code, Codex, or Antigravity.
 
 ---
 
-## ✨ Key Features
-
-- **🚀 Sub-Second Reflex**: Delegates atomic page navigation to TypeSafe Jev, executing decisions in ~200ms instead of 10s+.
-- **📦 Zero Third-Party NPM Dependencies**: Built 100% with standard Node.js (v20+) built-ins (`node:fs`, `node:util`, `node:path`, `fetch`).
-- **🛡️ Multi-Tier Safety Guardrails**:
-  - **Origin Jailing**: Restricts browser navigation strictly to `allowedOrigins`.
-  - **Anti-Deadlock Brake**: Automatically detects state stagnation and safely returns control to the supervising agent.
-  - **High-Risk Filter**: Denies destructive actions (e.g., delete, purchase, pay, submit) without human-in-the-loop verification.
-- **🔌 Agent-Ready**: Ready to be consumed as a standalone CLI or loaded directly as an Agent Skill in Claude Code, Codex, OpenCLI, or Antigravity.
-
----
-
-## 🚀 Quickstart
+## Quickstart
 
 ### 1. Requirements
 
 - **Node.js** >= 20.0.0
-- **BrowserOS Neo** running with HTTP MCP (default `http://127.0.0.1:9011/mcp`)
+- **BrowserOS Neo** running with MCP enabled (default endpoint: `http://127.0.0.1:9011/mcp`)
 - **TypeSafe API Key**
 
-### 2. Configure Your API Key
+### 2. Configure API Key
 
-`browseros-jev` automatically looks for your key across multiple standard locations with zero hardcoding:
+Set the key in your environment or keep it in the user config file (neither will be committed to git):
 
-**Option A (Environment Variable)**:
 ```bash
+# Option A: Environment variable
 export TYPESAFE_API_KEY="your-typesafe-api-key"
-```
 
-**Option B (Configuration File)**:
-Place your key inside `~/.config/jev-browser-use/credentials.env`:
-```env
+# Option B: Config file in home directory (~/.config/jev-browser-use/credentials.env)
 TYPESAFE_API_KEY="your-typesafe-api-key"
 ```
 
-### 3. Usage via CLI
+### 3. Run a Task
 
 ```bash
-# Basic task invocation
-node bin/run.mjs --page <pageId> --goal "<task_goal>"
-
-# Example: Switch to the Latest tab on Twitter / X
+# Syntax: node bin/run.mjs --page <tabId> --goal "<task description>"
 node bin/run.mjs --page 12 --goal "Click the 'Latest' tab"
-
-# Options:
-#   --page <number>     BrowserOS tab ID (required)
-#   --goal <string>     Task goal description (required)
-#   --maxSteps <num>    Maximum mechanical steps allowed (default: 10)
-#   --maxMs <num>       Maximum task execution time in ms (default: 45000)
-#   --endpoint <url>    BrowserOS MCP endpoint (default: http://127.0.0.1:9011/mcp)
 ```
+
+Common options:
+- `--page <number>`: Target BrowserOS tab ID (required).
+- `--goal <string>`: What you want Jev to do on the page (required).
+- `--maxSteps <number>`: Maximum mechanical actions before returning (default: `10`).
+- `--maxMs <number>`: Overall task timeout in milliseconds (default: `45000`).
+- `--endpoint <url>`: BrowserOS MCP server URL (default: `http://127.0.0.1:9011/mcp`).
 
 ---
 
-## 🧪 Testing
+## Verification & Tests
 
-The repository includes a comprehensive 100% offline unit and seam test suite:
+The repository includes a 100% offline, zero-network test suite:
 
 ```bash
+npm test
+# or
 node --test test/*.test.mjs
 ```
 
@@ -132,20 +90,19 @@ TAP version 13
 # suites 5
 # pass 14
 # fail 0
+# duration_ms ~75ms
 ```
 
 ---
 
-## 🤝 Acknowledgements & Ecosystem
+## Acknowledgments
 
-Special thanks to the pioneering projects that made this bridge possible:
-
-- [wy-coliney/jev-browser-use](https://github.com/wy-coliney/jev-browser-use) — The foundational Jev browser-use state-machine specification.
-- [BrowserOS Neo](https://browseros.com) — The premier real-user browser environment with native MCP accessibility support.
-- [TypeSafe AI](https://typesafe.ai) — Sub-second System-One decision models powering the reflex revolution.
+- [BrowserOS Neo](https://browseros.com) — The modern agent browser with native MCP support.
+- [TypeSafe AI](https://typesafe.ai) — Ultra-fast System-One decision models.
+- [wy-coliney/jev-browser-use](https://github.com/wy-coliney/jev-browser-use) — Original Jev state-machine specification.
 
 ---
 
-## 📄 License
+## License
 
 [MIT License](LICENSE) © 2026 Antigravity & 尖子.
