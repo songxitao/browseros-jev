@@ -1,9 +1,6 @@
 ---
 name: browseros-jev
-description: >
-  High-speed System-One browser action acceleration with TypeSafe Jev and BrowserOS Neo.
-  Achieves 10x-50x speedups, sub-second mechanical actions, and 90%+ LLM token savings
-  while maintaining strict safety policies and Codex supervisory verification.
+description: Fast-loop reflex accelerator for BrowserOS Neo browser automation using TypeSafe Jev. Dispatches high-frequency mechanical clicks, scrolling, and tab actions in ~200ms, returning supervisory control to the reasoning agent.
 ---
 
 # BrowserOS-Jev: System-One Browser Action Accelerator
