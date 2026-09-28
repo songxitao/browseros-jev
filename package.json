@@ -22,6 +22,18 @@
   ],
   "author": "songxitao & Antigravity",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songxitao/browseros-jev.git"
+  },
+  "files": [
+    "bin",
+    "src",
+    "skill",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=20.0.0"
   }
